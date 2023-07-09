@@ -1,10 +1,7 @@
-package ru.skypro.employee.employeeController;
+package ru.skypro.employee.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-import ru.skypro.employee.employeeService.EmployeeService;
+import org.springframework.web.bind.annotation.*;
+import ru.skypro.employee.service.EmployeeService;
 import ru.skypro.employee.model.Employee;
 
 import java.util.Collection;
@@ -21,8 +18,10 @@ public class EmployeeController {
 
     @GetMapping("/add")
     public Employee createEmployee(@RequestParam("firstName") String firstName,
-                                   @RequestParam("lastName") String lastName) {
-        return employeeService.addEmployee(firstName, lastName);
+                                   @RequestParam("lastName") String lastName,
+                                   @RequestParam("salary") int salary,
+                                   @RequestParam("departmentId") Integer departmentId) {
+        return employeeService.addEmployee(firstName, lastName, salary, departmentId);
     }
 
     @GetMapping("/remove")
