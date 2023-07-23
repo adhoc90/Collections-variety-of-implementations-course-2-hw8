@@ -35,3 +35,7 @@ build/
 /mvnw
 /mvnw.cmd
 
+/src/main/resources/application.properties
+/src/test/java/ru/skypro/employee/CollectionsVarietyOfImplementationsCourse2Hw8ApplicationTests.java
+/.mvn/wrapper/maven-wrapper.jar
+/.mvn/wrapper/maven-wrapper.properties
