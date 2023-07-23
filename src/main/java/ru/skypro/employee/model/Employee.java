@@ -5,20 +5,24 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.Objects;
 
 public class Employee {
-    private String firstName;
-    private String lastName;
+    private final Integer departmentId;
+    private final String firstName;
+    private final String lastName;
+    private final int salary;
 
-    public Employee(String firstName, String lastName) {
+    public Employee(String firstName, String lastName, int salary, Integer departmentId) {
+        this.departmentId = departmentId;
+        this.salary = salary;
         this.firstName = firstName;
         this.lastName = lastName;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public Integer getDepartmentId() {
+        return departmentId;
     }
 
-    public String getLastName() {
-        return lastName;
+    public int getSalary() {
+        return salary;
     }
 
     @JsonIgnore
