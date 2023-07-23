@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.util.Objects;
 
+import static org.apache.commons.lang3.StringUtils.capitalize;
+
 public class Employee {
     private final Integer departmentId;
     private final String firstName;
@@ -13,8 +15,8 @@ public class Employee {
     public Employee(String firstName, String lastName, int salary, Integer departmentId) {
         this.departmentId = departmentId;
         this.salary = salary;
-        this.firstName = firstName;
-        this.lastName = lastName;
+        this.firstName = capitalize(firstName.toLowerCase());
+        this.lastName = capitalize(lastName.toLowerCase());
     }
 
     public Integer getDepartmentId() {
@@ -28,6 +30,14 @@ public class Employee {
     @JsonIgnore
     public String getFullName() {
         return firstName + " " + lastName;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
     }
 
     @Override
