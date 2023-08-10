@@ -6,15 +6,24 @@ import ru.skypro.employee.exception.EmployeeAlreadyAddedException;
 import ru.skypro.employee.exception.EmployeeNotFoundException;
 import ru.skypro.employee.exception.EmployeeStorageIsFullException;
 import ru.skypro.employee.model.Employee;
+import ru.skypro.employee.service.EmployeeValidationService;
 
 import java.util.*;
+
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
     private final Map<String, Employee> employees = new HashMap<>();
+    private final EmployeeValidationService employeeValidationService;
+
+    public EmployeeServiceImpl(EmployeeValidationService employeeValidationService) {
+        this.employeeValidationService = employeeValidationService;
+    }
+
 
     @Override
     public Employee addEmployee(String firstName, String lastName, int salary, Integer departmentId) {
+        employeeValidationService.validate(firstName, lastName);
         Employee employee = new Employee(firstName, lastName, salary, departmentId);
 
         if (employees.containsKey(employee.getFullName())) {
