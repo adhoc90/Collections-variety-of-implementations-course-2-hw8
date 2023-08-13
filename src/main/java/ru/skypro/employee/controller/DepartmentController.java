@@ -1,9 +1,6 @@
 package ru.skypro.employee.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import ru.skypro.employee.model.Employee;
 import ru.skypro.employee.service.DepartmentService;
 
@@ -19,24 +16,29 @@ public class DepartmentController {
         this.departmentService = departmentService;
     }
 
-    @GetMapping("/max-salary")
-    public Employee getEmployeeWithMaxSalary(@RequestParam("departmentId") Integer departmentId) {
+    @GetMapping("{id}/salary/max")
+    public Employee getEmployeeWithMaxSalary(@PathVariable("id") Integer departmentId) {
         return departmentService.getEmployeeWithMaxSalaryOfDep(departmentId);
     }
 
-    @GetMapping("/min-salary")
-    public Employee getEmployeeWithMinSalary(@RequestParam("departmentId") Integer departmentId) {
+    @GetMapping("/{id}/salary/min")
+    public Employee getEmployeeWithMinSalary(@PathVariable("id") Integer departmentId) {
         return departmentService.getEmployeeWithMinSalaryOfDep(departmentId);
     }
 
-    @GetMapping(path = "/all", params = "departmentId")
-    public Map<Integer, List<Employee>> getEmployeesByDepartment(@RequestParam("departmentId") Integer departmentId) {
+    @GetMapping("/{id}/employees")
+    public Map<Integer, List<Employee>> getEmployeesByDepartment(@PathVariable("id") Integer departmentId) {
         return departmentService.getEmployeesByDepartment(departmentId);
     }
 
-    @GetMapping("/all")
+    @GetMapping("/employees")
     public Map<Integer, List<Employee>> getAllEmployeesByDepartment() {
         return departmentService.getAllEmployeesByDepartment();
+    }
+
+    @GetMapping("/{id}/salary/sum")
+    public Integer getSumSalaryByDepartment(@PathVariable("id") Integer departmentId) {
+        return departmentService.getSumSalaryOfDep(departmentId);
     }
 }
 
