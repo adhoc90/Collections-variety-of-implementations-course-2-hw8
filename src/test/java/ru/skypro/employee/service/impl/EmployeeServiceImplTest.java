@@ -1,17 +1,15 @@
 package ru.skypro.employee.service.impl;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ru.skypro.employee.exception.EmployeeAlreadyAddedException;
 import ru.skypro.employee.exception.EmployeeNotFoundException;
 import ru.skypro.employee.model.Employee;
 import ru.skypro.employee.service.EmployeeValidationService;
 
-import java.util.Collection;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static ru.skypro.employee.service.impl.EmployeeTestConstants.*;
+import static ru.skypro.employee.service.impl.constants.EmployeeTestConstants.*;
 
 class EmployeeServiceImplTest {
 

@@ -1,4 +1,4 @@
-package ru.skypro.employee.service.impl;
+package ru.skypro.employee.service.impl.constants;
 
 import ru.skypro.employee.model.Employee;
 
@@ -44,4 +44,9 @@ public class EmployeeTestConstants {
 
     public static final Map<Integer, List<Employee>> EMPLOYEES_BY_DEPARTMENT_MAP = DIFFERENT_DEPARTMENT_EMPLOYEES
             .stream().collect(Collectors.groupingBy(Employee::getDepartmentId));
+
+    public static final Map<Integer, List<Employee>> EMPLOYEES_BY_CURRENT_DEPARTMENT_MAP = DIFFERENT_DEPARTMENT_EMPLOYEES
+            .stream()
+            .filter(e -> e.getDepartmentId().equals(DEPARTMENT_ID2))
+            .collect(Collectors.groupingBy(Employee::getDepartmentId));
 }

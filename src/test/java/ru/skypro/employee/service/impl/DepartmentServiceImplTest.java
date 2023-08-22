@@ -12,7 +12,7 @@ import static java.util.Collections.emptyList;
 import static java.util.Collections.singletonList;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
-import static ru.skypro.employee.service.impl.EmployeeTestConstants.*;
+import static ru.skypro.employee.service.impl.constants.EmployeeTestConstants.*;
 
 @ExtendWith(MockitoExtension.class)
 class DepartmentServiceImplTest {
@@ -57,7 +57,7 @@ class DepartmentServiceImplTest {
     public void ShouldReturnEmployeesByDepId() {
         when(employeeService.showEmployeeList()).thenReturn(DIFFERENT_DEPARTMENT_EMPLOYEES);
         assertEquals(EMPLOYEES_MAP, departmentService.getEmployeesByDepartment(DEPARTMENT_ID));
-        assertEquals(singletonList(OTHER_DEPARTMENT_EMPLOYEE), departmentService.getEmployeesByDepartment(DEPARTMENT_ID2));
+        assertEquals(EMPLOYEES_BY_CURRENT_DEPARTMENT_MAP, departmentService.getEmployeesByDepartment(DEPARTMENT_ID2));
     }
 
     @Test
