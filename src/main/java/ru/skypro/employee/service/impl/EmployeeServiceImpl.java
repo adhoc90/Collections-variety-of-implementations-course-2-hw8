@@ -20,7 +20,6 @@ public class EmployeeServiceImpl implements EmployeeService {
         this.employeeValidationService = employeeValidationService;
     }
 
-
     @Override
     public Employee addEmployee(String firstName, String lastName, int salary, Integer departmentId) {
         employeeValidationService.validate(firstName, lastName);
@@ -28,10 +27,6 @@ public class EmployeeServiceImpl implements EmployeeService {
 
         if (employees.containsKey(employee.getFullName())) {
             throw new EmployeeAlreadyAddedException("Такой сотрудник уже есть");
-        }
-        int maxCountOfPeople = 5;
-        if (employees.size() >= maxCountOfPeople) {
-            throw new EmployeeStorageIsFullException("Список сотрудников заполнен, нельзя добавить нового");
         }
         employees.put(employee.getFullName(), employee);
         return employee;
